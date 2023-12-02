@@ -1,16 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
 import Face3RoundedIcon from "@mui/icons-material/Face3Rounded";
 import Link from "next/link";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CircularProgress from "@mui/material/CircularProgress";
 import PersonIcon from "@mui/icons-material/Person";
-import TimerIcon from "@mui/icons-material/Timer";
 
 const HostScreen = () => {
   const [roomCode, setRoomCode] = useState<string>("#7HI6G1");
   const [players, setPlayers] = useState<string[] | null>(null);
+  const specialRoles: React.MutableRefObject<string[]> = useRef<string[]>([
+    "Mafia",
+    "Doctor",
+    "Detective",
+    "Jester",
+    "Mystic",
+  ]);
 
   const LoadingTable = (): JSX.Element => {
     return (
@@ -87,25 +93,38 @@ const HostScreen = () => {
       ) : (
         <LoadingTable />
       )}
-      <div className="w-full flex justify-center my-5">
+      <div className="flex flex-col w-11/12 rounded-lg my-5 h-fit bg-white text-black rounded-md px-2 py-2">
+        <div className="flex flex-row w-full items-center space-x-2">
+          <PersonIcon />
+          <h1 className="font-bold text-lg">Role Settings</h1>
+        </div>
+        <div className="flex flex-row w-full">
+          <div className="flex flex-col w-1/3 mt-2">
+            <h2 className="text-md font-bold">Role</h2>
+            {specialRoles &&
+              specialRoles.current.map((role: string, index: number) => {
+                return (
+                  <div key={index}>
+                    <p className="text-sm">{role}</p>
+                  </div>
+                );
+              })}
+          </div>
+          <div className="flex flex-col items-center w-1/3 mt-2">
+            <h2 className="text-md font-bold">Amount</h2>
+          </div>
+          <div className="flex flex-col items-center w-1/3 mt-2">
+            <h2 className="text-md font-bold">Active</h2>
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex justify-center">
         <Link
           href="/"
           className="bg-[#C5FFE0] text-black w-11/12 h-12 font-bold rounded flex justify-center items-center border-2 border-[#31CC78]"
         >
           <p className="text-[#31CC78]">Start Game</p>
         </Link>
-      </div>
-      <div className="flex flex-col w-11/12 rounded-lg mb-5">
-        <div className="flex flex-row w-full items-center bg-white text-black rounded-md space-x-2 pl-2 py-2">
-          <PersonIcon />
-          <h1 className="font-bold">Role Settings</h1>
-        </div>
-      </div>
-      <div className="flex flex-col w-11/12 rounded-lg mb-5">
-        <div className="flex flex-row w-full items-center bg-white text-black rounded-md space-x-2 pl-2 py-2">
-          <TimerIcon />
-          <h1 className="font-bold">Round Settings</h1>
-        </div>
       </div>
     </div>
   );
