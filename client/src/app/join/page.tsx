@@ -12,6 +12,12 @@ const JoinScreen = () => {
     setUsername(e.target.value);
   };
 
+  const handleJoinGame = (e: any): void => {
+    username.length && username.length <= 10
+      ? console.log("valid username") //proceed
+      : console.log("Invalid username"); //reject
+  };
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div className="flex w-screen h-10 items-center pl-3 pt-2">
@@ -31,12 +37,13 @@ const JoinScreen = () => {
         className="w-9/12 h-14 my-10 rounded p-2 text-center font-medium italic text-black border-2 border-[#848282]"
         onChange={onChange}
       />
-      <Link
-        href="/"
-        className="bg-[#C5FFE0] text-black w-9/12 h-12 font-bold rounded flex justify-center items-center border-2 border-[#31CC78]"
-      >
-        <p className="text-[#31CC78]">Play</p>
-      </Link>
+        <Link
+          href="/"
+          className="bg-[#C5FFE0] text-black w-9/12 h-12 font-bold rounded flex justify-center items-center border-2 border-[#31CC78]"
+          onClick={handleJoinGame}
+        >
+          <p className="text-[#31CC78]">Play</p>
+        </Link>
     </div>
   );
 };

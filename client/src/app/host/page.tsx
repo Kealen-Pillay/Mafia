@@ -5,10 +5,20 @@ import Face3RoundedIcon from "@mui/icons-material/Face3Rounded";
 import Link from "next/link";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CircularProgress from "@mui/material/CircularProgress";
+import PersonIcon from "@mui/icons-material/Person";
+import TimerIcon from "@mui/icons-material/Timer";
 
 const HostScreen = () => {
   const [roomCode, setRoomCode] = useState<string>("#7HI6G1");
   const [players, setPlayers] = useState<string[] | null>(null);
+
+  const LoadingTable = (): JSX.Element => {
+    return (
+      <div className="w-11/12 flex items-center justify-center bg-white rounded-lg h-20">
+        <CircularProgress />
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
@@ -75,7 +85,7 @@ const HostScreen = () => {
           </div>
         </div>
       ) : (
-        <CircularProgress />
+        <LoadingTable />
       )}
       <div className="w-full flex justify-center my-5">
         <Link
@@ -84,6 +94,18 @@ const HostScreen = () => {
         >
           <p className="text-[#31CC78]">Start Game</p>
         </Link>
+      </div>
+      <div className="flex flex-col w-11/12 rounded-lg mb-5">
+        <div className="flex flex-row w-full items-center bg-white text-black rounded-md space-x-2 pl-2 py-2">
+          <PersonIcon />
+          <h1 className="font-bold">Role Settings</h1>
+        </div>
+      </div>
+      <div className="flex flex-col w-11/12 rounded-lg mb-5">
+        <div className="flex flex-row w-full items-center bg-white text-black rounded-md space-x-2 pl-2 py-2">
+          <TimerIcon />
+          <h1 className="font-bold">Round Settings</h1>
+        </div>
       </div>
     </div>
   );
