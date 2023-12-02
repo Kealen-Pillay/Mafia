@@ -9,17 +9,17 @@ const Home = () => {
       <input
         type="text"
         placeholder="Username"
-        className="w-9/12 h-10 my-5 rounded p-2 text-center font-medium italic text-black border-2 border-[#848282]"
+        className="w-9/12 h-14 my-5 rounded p-2 text-center font-medium italic text-black border-2 border-[#848282]"
       />
       <Link
         href="/host"
-        className="bg-[#C1BCFF] text-black w-9/12 h-10 font-bold rounded flex justify-center items-center my-7 border-2 border-[#8F86FC]"
+        className="bg-[#C1BCFF] text-black w-9/12 h-12 font-bold rounded flex justify-center items-center my-7 border-2 border-[#8F86FC]"
       >
         <p className="text-[#8F86FC]">Host Game</p>
       </Link>
       <Link
         href="/join"
-        className="bg-[#C5FFE0] text-black w-9/12 h-10 font-bold rounded flex justify-center items-center border-2 border-[#53ED9A]"
+        className="bg-[#C5FFE0] text-black w-9/12 h-12 font-bold rounded flex justify-center items-center border-2 border-[#53ED9A]"
       >
         <p className="text-[#53ED9A]">Join Game</p>
       </Link>
