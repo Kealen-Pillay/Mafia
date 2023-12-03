@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HomeScreen = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full mt-20">
+    <div className="flex flex-col items-center justify-center w-full h-full mt-10">
       <Image src={MafiaLogo} alt="Mafia Icon" className="w-4/5 mb-10 ml-10" />
       <input
         type="text"
