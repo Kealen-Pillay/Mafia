@@ -1,15 +1,16 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
 import Face3RoundedIcon from "@mui/icons-material/Face3Rounded";
 import Link from "next/link";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CircularProgress from "@mui/material/CircularProgress";
 import PersonIcon from "@mui/icons-material/Person";
+import { generateRoomCode } from "@/utils/Utilities";
 
 const HostScreen = () => {
   const [roomCode, setRoomCode] = useState<string>("#7HI6G1");
-  const [players, setPlayers] = useState<string[] | null>(null);
+  const [players, setPlayers] = useState<string[]>([]);
   const specialRoles: React.MutableRefObject<string[]> = useRef<string[]>([
     "Mafia",
     "Doctor",
@@ -17,6 +18,10 @@ const HostScreen = () => {
     "Jester",
     "Mystic",
   ]);
+
+  useEffect(() => {
+    setRoomCode(generateRoomCode(6));
+  }, []);
 
   const LoadingTable = (): JSX.Element => {
     return (
