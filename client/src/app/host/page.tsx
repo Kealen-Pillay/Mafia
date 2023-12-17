@@ -9,7 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { generateRoomCode } from "@/utils/Utilities";
 
 const HostScreen = () => {
-  const [roomCode, setRoomCode] = useState<string>("#7HI6G1");
+  const [roomCode, setRoomCode] = useState<string>("");
   const [players, setPlayers] = useState<string[]>([]);
   const specialRoles: React.MutableRefObject<string[]> = useRef<string[]>([
     "Mafia",
@@ -44,56 +44,18 @@ const HostScreen = () => {
           <h1 className="text-red-500">{roomCode}</h1>
         </div>
       </div>
-      {players ? (
+      {players.length > 0 ? (
         <div className="grid grid-cols-4 rounded-lg gap-4 bg-white p-3 w-11/12 h-fit">
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face6RoundedIcon className="text-4xl" />{" "}
-          </div>
-          <div className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center">
-            {" "}
-            <Face3RoundedIcon className="text-4xl" />{" "}
-          </div>
+          {players.map((player: string, key: number) => {
+            return (
+              <div
+                key={key}
+                className="rounded-full border-2 border-black aspect-square text-black flex justify-center items-center"
+              >
+                <Face6RoundedIcon className="text-4xl" />{" "}
+              </div>
+            );
+          })}
         </div>
       ) : (
         <LoadingTable />
